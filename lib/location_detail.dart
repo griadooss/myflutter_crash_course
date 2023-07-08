@@ -26,7 +26,9 @@ class LocationDetail extends StatelessWidget {
 
 Widget _section(String title, Color color) {
   return Container(
-    color: color,
+    decoration: BoxDecoration(
+      color: color,
+    ),
     child: Text(title),
   );
 }
