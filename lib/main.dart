@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myflutter_crash_course/location_detail.dart';
+import './mocks/mock_location.dart';
+import './location_detail.dart';
+import './models/location.dart';
 
 void main() {
-  runApp(const LocationDetail());
+  final Location mockLoction = MockLocation.fetchAny();
+
+  runApp(LocationDetail(location: mockLoction));
 }

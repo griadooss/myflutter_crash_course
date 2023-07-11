@@ -1,34 +1,42 @@
 import 'package:flutter/material.dart';
+import './models/location.dart';
 
 class LocationDetail extends StatelessWidget {
-  const LocationDetail({super.key});
+  final Location location;
+
+  const LocationDetail({super.key, required this.location});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Hello World!'),
+          title: Text(location.name),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _section('one', Colors.red),
-            _section('two', Colors.yellow),
-            _section('three', Colors.blue),
-          ],
+          children: _renderFacts(location),
         ),
       ),
     );
   }
 }
 
-Widget _section(String title, Color color) {
-  return Container(
-    decoration: BoxDecoration(
-      color: color,
-    ),
-    child: Text(title),
-  );
+List<Widget> _renderFacts(Location location) {
+  final result = <Widget>[];
+
+  for (int i = 0; i < location.facts.length; i++) {
+    result.add(_sectionTitle(location.facts[i].title));
+    result.add(_sectioniText(location.facts[i].text));
+  }
+  return result;
+}
+
+Widget _sectioniText(String text) {
+  return Text(text);
+}
+
+Widget _sectionTitle(String title) {
+  return Text(title);
 }
