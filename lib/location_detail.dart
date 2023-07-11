@@ -8,8 +8,7 @@ class LocationDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return  Scaffold(
         appBar: AppBar(
           title: Text(location.name),
         ),
@@ -18,8 +17,7 @@ class LocationDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: _renderFacts(location),
         ),
-      ),
-    );
+      );
   }
 }
 

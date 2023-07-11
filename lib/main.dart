@@ -6,5 +6,5 @@ import './models/location.dart';
 void main() {
   final Location mockLoction = MockLocation.fetchAny();
 
-  runApp(LocationDetail(location: mockLoction));
+  runApp(MaterialApp(home: LocationDetail(location: mockLoction)));
 }
