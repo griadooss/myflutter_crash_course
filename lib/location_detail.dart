@@ -8,17 +8,24 @@ class LocationDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: AppBar(
-          title: Text(location.name),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: _renderFacts(location),
-        ),
-      );
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(location.name),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: _renderBody(location),
+      ),
+    );
   }
+}
+
+List<Widget> _renderBody(Location location) {
+  final result = <Widget>[];
+  result.add(_bannerImage(location.imglink, 250.0));
+  result.addAll(_renderFacts(location));
+  return result;
 }
 
 List<Widget> _renderFacts(Location location) {
@@ -32,9 +39,26 @@ List<Widget> _renderFacts(Location location) {
 }
 
 Widget _sectioniText(String text) {
-  return Text(text);
+  return Container(
+    padding: const EdgeInsets.fromLTRB(25.0, 15.0, 25.0, 15.0),
+    child: Text(text),
+  );
 }
 
 Widget _sectionTitle(String title) {
-  return Text(title);
+  return Container(
+    padding: const EdgeInsets.fromLTRB(25.0, 25.0, 25.0, 10.0),
+    child: Text(
+      title,
+      textAlign: TextAlign.left,
+      style: const TextStyle(color: Colors.black, fontSize: 25.0),
+    ),
+  );
+}
+
+Widget _bannerImage(String url, double height) {
+  return Container(
+    constraints: BoxConstraints.tightFor(height: height),
+    child: Image.network(url, fit: BoxFit.fitWidth),
+  );
 }
